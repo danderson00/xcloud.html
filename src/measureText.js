@@ -11,13 +11,13 @@ module.exports = function (word, font, size) {
 
 function createSpan(word, font, size) {
   var span = document.createElement('span')
-  span.attributes['style'] = `font-family: ${font}; font-size: ${size}pt; position: 'absolute'; top: 10000px; margin: 0; padding: 0;`
+  span.style = `font-family: ${font}; font-size: ${size}; display: block; position: absolute; top: 10000px; margin: 0; padding: 0;`
   span.innerHTML = word
   return span
 }
 
 function findBody() {
-  var body = document.getElementsByName('body')
+  var body = document.getElementsByTagName('body')
   if(body.length !== 1)
     throw new Error('HTML document does not contain a single body element')
   return body[0]
