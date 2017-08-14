@@ -1,0 +1,26 @@
+{
+  "name": "xcloud.html",
+  "version": "0.0.1",
+  "description": "This library contains a HTML implementation for xcloud.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danderson00/xcloud.html.git"
+  },
+  "keywords": [],
+  "author": "danderson00",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danderson00/xcloud.html/issues"
+  },
+  "homepage": "https://github.com/danderson00/xcloud.html#readme",
+  "dependencies": {
+    "xcloud": "^0.0.1"
+  },
+  "devDependencies": {
+    "webpack": "^3.5.4"
+  }
+}
