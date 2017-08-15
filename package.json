@@ -4,7 +4,8 @@
   "description": "This library contains a HTML implementation for xcloud.",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "sample": "webpack ./sample/index.js ./sample/build.js -d"
   },
   "repository": {
     "type": "git",
