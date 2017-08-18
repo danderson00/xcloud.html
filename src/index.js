@@ -4,10 +4,10 @@ const xcloud = require('xcloud')
 module.exports = function (words, options) {
   options = Object.assign({}, { measureText: measureText }, options)
   const cloud = xcloud(words, options)
-  const cloudElement = renderCloud(cloud)
+  const element = renderCloud(cloud)
   if(options.target)
-    options.target.appendChild(cloudElement)
-  return cloudElement
+    options.target.appendChild(element)
+  return { element, words: cloud }
 }
 
 function renderCloud(words) {

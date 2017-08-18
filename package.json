@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "sample": "webpack ./sample/index.js ./sample/build.js -d"
+    "static-sample": "webpack ./sample/static/index.js ./sample/static/build.js -d",
+    "animated-sample": "webpack ./sample/animated/index.js ./sample/animated/build.js -d"
   },
   "repository": {
     "type": "git",

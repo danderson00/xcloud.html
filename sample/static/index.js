@@ -1,4 +1,4 @@
-const xcloud = require('../src')
+const xcloud = require('../../src')
 
 window.onload = function () {
   const words = [
@@ -36,7 +36,7 @@ window.onload = function () {
 
   xcloud(words, { 
     target: document.getElementById('target'),
-    shape: 'rectangular',
+    // shape: 'rectangular',
     fontSize: { from: 0.02, to: 0.07 }
   })
 }
