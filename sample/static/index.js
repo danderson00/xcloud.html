@@ -37,6 +37,6 @@ window.onload = function () {
   xcloud(words, { 
     target: document.getElementById('target'),
     // shape: 'rectangular',
-    fontSize: { from: 0.02, to: 0.07 }
+    // padding: 5
   })
 }

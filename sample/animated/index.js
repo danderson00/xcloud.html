@@ -26,7 +26,7 @@ const words = [
 
 window.onload = function () {
   const target = document.getElementById('target')
-  let previous = xcloud(words[0], { target }).words
+  let previous = xcloud(words[0], { target, padding: 5 }).words
 
   setTimeout(() => {
     target.childNodes[0].remove()
