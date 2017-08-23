@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "static-sample": "webpack ./sample/static/index.js ./sample/static/build.js -d",
-    "animated-sample": "webpack ./sample/animated/index.js ./sample/animated/build.js -d"
+    "static-sample": "webpack ./sample/static/index.js ./sample/static/build.js",
+    "animated-sample": "webpack ./sample/animated/full.js ./sample/animated/build.js -d"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,10 @@
     "xcloud": "^0.0.1"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
     "webpack": "^3.5.4"
   }
 }

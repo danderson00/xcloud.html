@@ -65,91 +65,361 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/*!*******************************!*\
-  !*** ../xcloud/src/bounds.js ***!
-  \*******************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("var bounds = module.exports = {\r\n  overlapping: function (a, b, padding) {\r\n    padding = padding || 0\r\n    return !(b.left - padding > a.left + a.width + padding\r\n      || a.left - padding > b.left + b.width + padding\r\n      || b.top - padding > a.top + a.height + padding\r\n      || a.top - padding > b.top + b.height + padding)\r\n  },\r\n\r\n  hitTest: function (newWord, existingWords, padding) {\r\n    return existingWords.some(word => bounds.overlapping(newWord, word, padding))\r\n  },\r\n\r\n  outsideContainer: function (word, width, height) {\r\n    return word.left < 0 \r\n      || word.top < 0\r\n      || (word.left + word.width) > width\r\n      || (word.top + word.height) > height\r\n  }\r\n}//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMC5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy8uLi94Y2xvdWQvc3JjL2JvdW5kcy5qcz8xMzFlIl0sInNvdXJjZXNDb250ZW50IjpbInZhciBib3VuZHMgPSBtb2R1bGUuZXhwb3J0cyA9IHtcclxuICBvdmVybGFwcGluZzogZnVuY3Rpb24gKGEsIGIsIHBhZGRpbmcpIHtcclxuICAgIHBhZGRpbmcgPSBwYWRkaW5nIHx8IDBcclxuICAgIHJldHVybiAhKGIubGVmdCAtIHBhZGRpbmcgPiBhLmxlZnQgKyBhLndpZHRoICsgcGFkZGluZ1xyXG4gICAgICB8fCBhLmxlZnQgLSBwYWRkaW5nID4gYi5sZWZ0ICsgYi53aWR0aCArIHBhZGRpbmdcclxuICAgICAgfHwgYi50b3AgLSBwYWRkaW5nID4gYS50b3AgKyBhLmhlaWdodCArIHBhZGRpbmdcclxuICAgICAgfHwgYS50b3AgLSBwYWRkaW5nID4gYi50b3AgKyBiLmhlaWdodCArIHBhZGRpbmcpXHJcbiAgfSxcclxuXHJcbiAgaGl0VGVzdDogZnVuY3Rpb24gKG5ld1dvcmQsIGV4aXN0aW5nV29yZHMsIHBhZGRpbmcpIHtcclxuICAgIHJldHVybiBleGlzdGluZ1dvcmRzLnNvbWUod29yZCA9PiBib3VuZHMub3ZlcmxhcHBpbmcobmV3V29yZCwgd29yZCwgcGFkZGluZykpXHJcbiAgfSxcclxuXHJcbiAgb3V0c2lkZUNvbnRhaW5lcjogZnVuY3Rpb24gKHdvcmQsIHdpZHRoLCBoZWlnaHQpIHtcclxuICAgIHJldHVybiB3b3JkLmxlZnQgPCAwIFxyXG4gICAgICB8fCB3b3JkLnRvcCA8IDBcclxuICAgICAgfHwgKHdvcmQubGVmdCArIHdvcmQud2lkdGgpID4gd2lkdGhcclxuICAgICAgfHwgKHdvcmQudG9wICsgd29yZC5oZWlnaHQpID4gaGVpZ2h0XHJcbiAgfVxyXG59XG5cblxuLy8vLy8vLy8vLy8vLy8vLy8vXG4vLyBXRUJQQUNLIEZPT1RFUlxuLy8gLi4veGNsb3VkL3NyYy9ib3VuZHMuanNcbi8vIG1vZHVsZSBpZCA9IDBcbi8vIG1vZHVsZSBjaHVua3MgPSAwIl0sIm1hcHBpbmdzIjoiQUFBQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBIiwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///0\n");
+"use strict";
+
+
+var bounds = module.exports = {
+  overlapping: function overlapping(a, b, padding) {
+    padding = padding || 0;
+    return !(b.left - padding > a.left + a.width + padding || a.left - padding > b.left + b.width + padding || b.top - padding > a.top + a.height + padding || a.top - padding > b.top + b.height + padding);
+  },
+
+  hitTest: function hitTest(newWord, existingWords, padding) {
+    return existingWords.some(function (word) {
+      return bounds.overlapping(newWord, word, padding);
+    });
+  },
+
+  outsideContainer: function outsideContainer(word, width, height) {
+    return word.left < 0 || word.top < 0 || word.left + word.width > width || word.top + word.height > height;
+  }
+};
 
 /***/ }),
 /* 1 */
-/*!********************************!*\
-  !*** ./sample/static/index.js ***!
-  \********************************/
-/*! no static exports found */
-/*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const xcloud = __webpack_require__(/*! ../../src */ 2)\r\n\r\nwindow.onload = function () {\r\n  const words = [\r\n    { text: 'test1', weight: 1 },\r\n    { text: 'test2', weight: 2 },\r\n    { text: 'test3', weight: 3 },\r\n    { text: 'test4', weight: 3 },\r\n    { text: 'test5', weight: 4 },\r\n    { text: 'test6', weight: 4 },\r\n    { text: 'test7', weight: 5 },\r\n    { text: 'test8', weight: 1 },\r\n    { text: 'test9', weight: 7 },\r\n    { text: 'test10', weight: 4 },\r\n    { text: 'test11', weight: 2 },\r\n    { text: 'test12', weight: 5 },\r\n    { text: 'test13', weight: 6 },\r\n    { text: 'test14', weight: 3 },\r\n    { text: 'test15', weight: 3 },\r\n    { text: 'test16', weight: 1 },\r\n    { text: 'test17', weight: 5 },\r\n    { text: 'test18', weight: 8 },\r\n    { text: 'test19', weight: 2 },\r\n    { text: 'test20', weight: 3 },\r\n    { text: 'test21', weight: 2 },\r\n    { text: 'test22', weight: 6 },\r\n    { text: 'test23', weight: 4 },\r\n    { text: 'test24', weight: 3 },\r\n    { text: 'test25', weight: 5 },\r\n    { text: 'test26', weight: 2 },\r\n    { text: 'test27', weight: 2 },\r\n    { text: 'test28', weight: 3 },\r\n    { text: 'test29', weight: 1 },\r\n    { text: 'test30', weight: 4 },\r\n  ]\r\n\r\n  xcloud(words, { \r\n    target: document.getElementById('target'),\r\n    // shape: 'rectangular',\r\n    padding: 5\r\n  })\r\n}//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMS5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy8uL3NhbXBsZS9zdGF0aWMvaW5kZXguanM/MGM1NiJdLCJzb3VyY2VzQ29udGVudCI6WyJjb25zdCB4Y2xvdWQgPSByZXF1aXJlKCcuLi8uLi9zcmMnKVxyXG5cclxud2luZG93Lm9ubG9hZCA9IGZ1bmN0aW9uICgpIHtcclxuICBjb25zdCB3b3JkcyA9IFtcclxuICAgIHsgdGV4dDogJ3Rlc3QxJywgd2VpZ2h0OiAxIH0sXHJcbiAgICB7IHRleHQ6ICd0ZXN0MicsIHdlaWdodDogMiB9LFxyXG4gICAgeyB0ZXh0OiAndGVzdDMnLCB3ZWlnaHQ6IDMgfSxcclxuICAgIHsgdGV4dDogJ3Rlc3Q0Jywgd2VpZ2h0OiAzIH0sXHJcbiAgICB7IHRleHQ6ICd0ZXN0NScsIHdlaWdodDogNCB9LFxyXG4gICAgeyB0ZXh0OiAndGVzdDYnLCB3ZWlnaHQ6IDQgfSxcclxuICAgIHsgdGV4dDogJ3Rlc3Q3Jywgd2VpZ2h0OiA1IH0sXHJcbiAgICB7IHRleHQ6ICd0ZXN0OCcsIHdlaWdodDogMSB9LFxyXG4gICAgeyB0ZXh0OiAndGVzdDknLCB3ZWlnaHQ6IDcgfSxcclxuICAgIHsgdGV4dDogJ3Rlc3QxMCcsIHdlaWdodDogNCB9LFxyXG4gICAgeyB0ZXh0OiAndGVzdDExJywgd2VpZ2h0OiAyIH0sXHJcbiAgICB7IHRleHQ6ICd0ZXN0MTInLCB3ZWlnaHQ6IDUgfSxcclxuICAgIHsgdGV4dDogJ3Rlc3QxMycsIHdlaWdodDogNiB9LFxyXG4gICAgeyB0ZXh0OiAndGVzdDE0Jywgd2VpZ2h0OiAzIH0sXHJcbiAgICB7IHRleHQ6ICd0ZXN0MTUnLCB3ZWlnaHQ6IDMgfSxcclxuICAgIHsgdGV4dDogJ3Rlc3QxNicsIHdlaWdodDogMSB9LFxyXG4gICAgeyB0ZXh0OiAndGVzdDE3Jywgd2VpZ2h0OiA1IH0sXHJcbiAgICB7IHRleHQ6ICd0ZXN0MTgnLCB3ZWlnaHQ6IDggfSxcclxuICAgIHsgdGV4dDogJ3Rlc3QxOScsIHdlaWdodDogMiB9LFxyXG4gICAgeyB0ZXh0OiAndGVzdDIwJywgd2VpZ2h0OiAzIH0sXHJcbiAgICB7IHRleHQ6ICd0ZXN0MjEnLCB3ZWlnaHQ6IDIgfSxcclxuICAgIHsgdGV4dDogJ3Rlc3QyMicsIHdlaWdodDogNiB9LFxyXG4gICAgeyB0ZXh0OiAndGVzdDIzJywgd2VpZ2h0OiA0IH0sXHJcbiAgICB7IHRleHQ6ICd0ZXN0MjQnLCB3ZWlnaHQ6IDMgfSxcclxuICAgIHsgdGV4dDogJ3Rlc3QyNScsIHdlaWdodDogNSB9LFxyXG4gICAgeyB0ZXh0OiAndGVzdDI2Jywgd2VpZ2h0OiAyIH0sXHJcbiAgICB7IHRleHQ6ICd0ZXN0MjcnLCB3ZWlnaHQ6IDIgfSxcclxuICAgIHsgdGV4dDogJ3Rlc3QyOCcsIHdlaWdodDogMyB9LFxyXG4gICAgeyB0ZXh0OiAndGVzdDI5Jywgd2VpZ2h0OiAxIH0sXHJcbiAgICB7IHRleHQ6ICd0ZXN0MzAnLCB3ZWlnaHQ6IDQgfSxcclxuICBdXHJcblxyXG4gIHhjbG91ZCh3b3JkcywgeyBcclxuICAgIHRhcmdldDogZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3RhcmdldCcpLFxyXG4gICAgLy8gc2hhcGU6ICdyZWN0YW5ndWxhcicsXHJcbiAgICBwYWRkaW5nOiA1XHJcbiAgfSlcclxufVxuXG5cbi8vLy8vLy8vLy8vLy8vLy8vL1xuLy8gV0VCUEFDSyBGT09URVJcbi8vIC4vc2FtcGxlL3N0YXRpYy9pbmRleC5qc1xuLy8gbW9kdWxlIGlkID0gMVxuLy8gbW9kdWxlIGNodW5rcyA9IDAiXSwibWFwcGluZ3MiOiJBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQSIsInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///1\n");
+"use strict";
+
+
+var xcloud = __webpack_require__(2);
+var words = __webpack_require__(8);
+
+window.onload = function () {
+
+  xcloud(words, {
+    target: document.getElementById('target')
+    // shape: 'rectangular',
+    // padding: 5
+  });
+};
 
 /***/ }),
 /* 2 */
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
-/*! no static exports found */
-/*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const measureText = __webpack_require__(/*! ./measureText */ 3)\r\nconst xcloud = __webpack_require__(/*! xcloud */ 4)\r\n\r\nmodule.exports = function (words, options) {\r\n  options = Object.assign({}, { measureText: measureText }, options)\r\n  const cloud = xcloud(words, options)\r\n  const element = renderCloud(cloud)\r\n  if(options.target)\r\n    options.target.appendChild(element)\r\n  return { element, words: cloud }\r\n}\r\n\r\nfunction renderCloud(words) {\r\n  return words.reduce((target, word) => {\r\n    var span = document.createElement('span')\r\n    span.style = `display: block; position: absolute; top: ${word.top}px; left: ${word.left}px; font-family: ${word.font}; font-size: ${word.size}px; color: ${colorToCSS(word.color)}`\r\n    span.innerHTML = word.text\r\n    target.appendChild(span)\r\n    return target\r\n  }, document.createElement('div'))\r\n}\r\n\r\nfunction colorToCSS(color) {\r\n  return `rgb(${color.r}, ${color.g}, ${color.b})`  \r\n}//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMi5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy8uL3NyYy9pbmRleC5qcz85NTUyIl0sInNvdXJjZXNDb250ZW50IjpbImNvbnN0IG1lYXN1cmVUZXh0ID0gcmVxdWlyZSgnLi9tZWFzdXJlVGV4dCcpXHJcbmNvbnN0IHhjbG91ZCA9IHJlcXVpcmUoJ3hjbG91ZCcpXHJcblxyXG5tb2R1bGUuZXhwb3J0cyA9IGZ1bmN0aW9uICh3b3Jkcywgb3B0aW9ucykge1xyXG4gIG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHt9LCB7IG1lYXN1cmVUZXh0OiBtZWFzdXJlVGV4dCB9LCBvcHRpb25zKVxyXG4gIGNvbnN0IGNsb3VkID0geGNsb3VkKHdvcmRzLCBvcHRpb25zKVxyXG4gIGNvbnN0IGVsZW1lbnQgPSByZW5kZXJDbG91ZChjbG91ZClcclxuICBpZihvcHRpb25zLnRhcmdldClcclxuICAgIG9wdGlvbnMudGFyZ2V0LmFwcGVuZENoaWxkKGVsZW1lbnQpXHJcbiAgcmV0dXJuIHsgZWxlbWVudCwgd29yZHM6IGNsb3VkIH1cclxufVxyXG5cclxuZnVuY3Rpb24gcmVuZGVyQ2xvdWQod29yZHMpIHtcclxuICByZXR1cm4gd29yZHMucmVkdWNlKCh0YXJnZXQsIHdvcmQpID0+IHtcclxuICAgIHZhciBzcGFuID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnc3BhbicpXHJcbiAgICBzcGFuLnN0eWxlID0gYGRpc3BsYXk6IGJsb2NrOyBwb3NpdGlvbjogYWJzb2x1dGU7IHRvcDogJHt3b3JkLnRvcH1weDsgbGVmdDogJHt3b3JkLmxlZnR9cHg7IGZvbnQtZmFtaWx5OiAke3dvcmQuZm9udH07IGZvbnQtc2l6ZTogJHt3b3JkLnNpemV9cHg7IGNvbG9yOiAke2NvbG9yVG9DU1Mod29yZC5jb2xvcil9YFxyXG4gICAgc3Bhbi5pbm5lckhUTUwgPSB3b3JkLnRleHRcclxuICAgIHRhcmdldC5hcHBlbmRDaGlsZChzcGFuKVxyXG4gICAgcmV0dXJuIHRhcmdldFxyXG4gIH0sIGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ2RpdicpKVxyXG59XHJcblxyXG5mdW5jdGlvbiBjb2xvclRvQ1NTKGNvbG9yKSB7XHJcbiAgcmV0dXJuIGByZ2IoJHtjb2xvci5yfSwgJHtjb2xvci5nfSwgJHtjb2xvci5ifSlgICBcclxufVxuXG5cbi8vLy8vLy8vLy8vLy8vLy8vL1xuLy8gV0VCUEFDSyBGT09URVJcbi8vIC4vc3JjL2luZGV4LmpzXG4vLyBtb2R1bGUgaWQgPSAyXG4vLyBtb2R1bGUgY2h1bmtzID0gMCJdLCJtYXBwaW5ncyI6IkFBQUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EiLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///2\n");
+"use strict";
+
+
+var measureText = __webpack_require__(3);
+var xcloud = __webpack_require__(4);
+
+module.exports = function (words, options) {
+  options = Object.assign({}, { measureText: measureText }, options);
+  var cloud = xcloud(words, options);
+  var element = renderCloud(cloud);
+  if (options.target) options.target.appendChild(element);
+  return { element: element, words: cloud };
+};
+
+function renderCloud(words) {
+  return words.reduce(function (target, word) {
+    var span = document.createElement('span');
+    span.style.cssText = 'display: block; position: absolute; top: ' + word.top + 'px; left: ' + word.left + 'px; font-family: ' + word.font + '; font-size: ' + word.size + 'px; color: ' + colorToCSS(word.color);
+    span.innerHTML = word.text;
+    target.appendChild(span);
+    return target;
+  }, document.createElement('div'));
+}
+
+function colorToCSS(color) {
+  return 'rgb(' + color.r + ', ' + color.g + ', ' + color.b + ')';
+}
 
 /***/ }),
 /* 3 */
-/*!****************************!*\
-  !*** ./src/measureText.js ***!
-  \****************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (word, font, size) {\r\n  var span = createSpan(word, font, size)\r\n  findBody().appendChild(span)\r\n  var dimensions = {\r\n    width: span.offsetWidth,\r\n    height: span.offsetHeight\r\n  }\r\n  span.remove()\r\n  return dimensions\r\n}\r\n\r\nfunction createSpan(word, font, size) {\r\n  var span = document.createElement('span')\r\n  span.style = `font-family: ${font}; font-size: ${size}px; display: block; position: absolute; top: 10000px; margin: 0; padding: 0;`\r\n  span.innerHTML = word\r\n  return span\r\n}\r\n\r\nfunction findBody() {\r\n  var body = document.getElementsByTagName('body')\r\n  if(body.length !== 1)\r\n    throw new Error('HTML document does not contain a single body element')\r\n  return body[0]\r\n}//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMy5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy8uL3NyYy9tZWFzdXJlVGV4dC5qcz83NDE2Il0sInNvdXJjZXNDb250ZW50IjpbIm1vZHVsZS5leHBvcnRzID0gZnVuY3Rpb24gKHdvcmQsIGZvbnQsIHNpemUpIHtcclxuICB2YXIgc3BhbiA9IGNyZWF0ZVNwYW4od29yZCwgZm9udCwgc2l6ZSlcclxuICBmaW5kQm9keSgpLmFwcGVuZENoaWxkKHNwYW4pXHJcbiAgdmFyIGRpbWVuc2lvbnMgPSB7XHJcbiAgICB3aWR0aDogc3Bhbi5vZmZzZXRXaWR0aCxcclxuICAgIGhlaWdodDogc3Bhbi5vZmZzZXRIZWlnaHRcclxuICB9XHJcbiAgc3Bhbi5yZW1vdmUoKVxyXG4gIHJldHVybiBkaW1lbnNpb25zXHJcbn1cclxuXHJcbmZ1bmN0aW9uIGNyZWF0ZVNwYW4od29yZCwgZm9udCwgc2l6ZSkge1xyXG4gIHZhciBzcGFuID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnc3BhbicpXHJcbiAgc3Bhbi5zdHlsZSA9IGBmb250LWZhbWlseTogJHtmb250fTsgZm9udC1zaXplOiAke3NpemV9cHg7IGRpc3BsYXk6IGJsb2NrOyBwb3NpdGlvbjogYWJzb2x1dGU7IHRvcDogMTAwMDBweDsgbWFyZ2luOiAwOyBwYWRkaW5nOiAwO2BcclxuICBzcGFuLmlubmVySFRNTCA9IHdvcmRcclxuICByZXR1cm4gc3BhblxyXG59XHJcblxyXG5mdW5jdGlvbiBmaW5kQm9keSgpIHtcclxuICB2YXIgYm9keSA9IGRvY3VtZW50LmdldEVsZW1lbnRzQnlUYWdOYW1lKCdib2R5JylcclxuICBpZihib2R5Lmxlbmd0aCAhPT0gMSlcclxuICAgIHRocm93IG5ldyBFcnJvcignSFRNTCBkb2N1bWVudCBkb2VzIG5vdCBjb250YWluIGEgc2luZ2xlIGJvZHkgZWxlbWVudCcpXHJcbiAgcmV0dXJuIGJvZHlbMF1cclxufVxuXG5cbi8vLy8vLy8vLy8vLy8vLy8vL1xuLy8gV0VCUEFDSyBGT09URVJcbi8vIC4vc3JjL21lYXN1cmVUZXh0LmpzXG4vLyBtb2R1bGUgaWQgPSAzXG4vLyBtb2R1bGUgY2h1bmtzID0gMCJdLCJtYXBwaW5ncyI6IkFBQUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBIiwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///3\n");
+"use strict";
+
+
+module.exports = function (word, font, size) {
+  var span = createSpan(word, font, size);
+  findBody().appendChild(span);
+  var dimensions = {
+    width: span.offsetWidth,
+    height: span.offsetHeight
+  };
+  span.remove();
+  return dimensions;
+};
+
+function createSpan(word, font, size) {
+  var span = document.createElement('span');
+  span.style.cssText = 'font-family: ' + font + '; font-size: ' + size + 'px; display: block; position: absolute; top: 10000px; margin: 0; padding: 0;';
+  span.innerHTML = word;
+  return span;
+}
+
+function findBody() {
+  var body = document.getElementsByTagName('body');
+  if (body.length !== 1) throw new Error('HTML document does not contain a single body element');
+  return body[0];
+}
 
 /***/ }),
 /* 4 */
-/*!******************************!*\
-  !*** ../xcloud/src/index.js ***!
-  \******************************/
-/*! no static exports found */
-/*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const fontSizes = __webpack_require__(/*! ./fontSizes */ 5)\r\nconst colorGenerator = __webpack_require__(/*! ./colorGenerator */ 6)\r\nconst bounds = __webpack_require__(/*! ./bounds */ 0)\r\nconst layout = __webpack_require__(/*! ./layout */ 7)\r\n\r\nconst defaultOptions = {\r\n  width: 640,\r\n  height: 480,\r\n  padding: 0,\r\n  steps: 10,\r\n  shape: 'elliptic',\r\n  removeOverflowing: true,\r\n  colors: { r: 34, g: 85, b: 153 },\r\n  fontSize: { from: 0.02, to: 0.07 },\r\n  font: 'Arial'\r\n}\r\n\r\nmodule.exports = function(words, options) {\r\n  options = Object.assign({}, defaultOptions, options)\r\n  \r\n  words.forEach(word => word.weight = parseFloat(word.weight, 10))\r\n  words.sort((a, b) => b.weight - a.weight)\r\n\r\n  const outputWords = []\r\n  const maxWeight = words[0].weight\r\n  const minWeight = words[words.length - 1].weight\r\n  const sizes = fontSizes.generate(options.fontSize, options.steps, options.width, options.height)\r\n  const colors = colorGenerator.generate(options.colors, options.steps)\r\n  \r\n  if(options.previous)\r\n    layoutFromPrevious()\r\n  else\r\n    words.forEach((word, index) => layoutWord(index, word))\r\n\r\n  return outputWords\r\n  \r\n  function layoutFromPrevious() {\r\n    const previousWords = options.previous.reduce((words, word) => (words[word.text] = word, words), {})\r\n    const wordsForSecondPass = []\r\n    const wordsForThirdPass = []\r\n    \r\n    // first pass - lay out each word that was previously rendered in the same place, if possible\r\n    words.forEach(word => {\r\n      const previousWord = previousWords[word.text]\r\n      const weight = fontSizes.mapWeightToScale(word.weight, minWeight, maxWeight, options.steps)\r\n      const dimensions = options.measureText(word.text, options.font, sizes[weight - 1])\r\n  \r\n      if(previousWord) {\r\n        const outputWord = createOutputWord(word, weight, dimensions, \r\n          previousWord.left - (dimensions.width - previousWord.width) / 2.0, \r\n          previousWord.top - (dimensions.height - previousWord.height) / 2.0)\r\n\r\n        if(!bounds.hitTest(outputWord, outputWords)) {\r\n          outputWords.push(outputWord)\r\n        } else {\r\n          wordsForSecondPass.push(word)\r\n        }\r\n      } else {\r\n        wordsForThirdPass.push(word)\r\n      }\r\n    })\r\n\r\n    // second pass - lay out each word that couldn't be placed in first pass\r\n    wordsForSecondPass.forEach((word, index) => layoutWord(index, word))\r\n\r\n    // third pass - lay out remaining words with no previous word\r\n    wordsForThirdPass.forEach((word, index) => layoutWord(index, word))    \r\n  }\r\n\r\n  function layoutWord(index, word) {\r\n    const weight = fontSizes.mapWeightToScale(word.weight, minWeight, maxWeight, options.steps)\r\n    const dimensions = options.measureText(word.text, options.font, sizes[weight - 1])\r\n    \r\n    const outputWord = layout.next(index, options, outputWords, \r\n      createOutputWord(word, weight, dimensions, (options.width - dimensions.width) / 2.0, (options.height - dimensions.height) / 2.0)\r\n    )\r\n\r\n    if (!(options.removeOverflowing && bounds.outsideContainer(outputWord, options.width, options.height)))\r\n      outputWords.push(outputWord)\r\n  }\r\n\r\n  function createOutputWord(word, weight, dimensions, left, top) {\r\n    return {\r\n      color: colors[weight - 1],\r\n      size: sizes[weight - 1],\r\n      weight: weight,\r\n      text: word.text,\r\n      font: options.font,\r\n      width: dimensions.width,\r\n      height: dimensions.height,\r\n      left: left,\r\n      top: top\r\n    }\r\n  }\r\n}\r\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiNC5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy8uLi94Y2xvdWQvc3JjL2luZGV4LmpzPzc4NzEiXSwic291cmNlc0NvbnRlbnQiOlsiY29uc3QgZm9udFNpemVzID0gcmVxdWlyZSgnLi9mb250U2l6ZXMnKVxyXG5jb25zdCBjb2xvckdlbmVyYXRvciA9IHJlcXVpcmUoJy4vY29sb3JHZW5lcmF0b3InKVxyXG5jb25zdCBib3VuZHMgPSByZXF1aXJlKCcuL2JvdW5kcycpXHJcbmNvbnN0IGxheW91dCA9IHJlcXVpcmUoJy4vbGF5b3V0JylcclxuXHJcbmNvbnN0IGRlZmF1bHRPcHRpb25zID0ge1xyXG4gIHdpZHRoOiA2NDAsXHJcbiAgaGVpZ2h0OiA0ODAsXHJcbiAgcGFkZGluZzogMCxcclxuICBzdGVwczogMTAsXHJcbiAgc2hhcGU6ICdlbGxpcHRpYycsXHJcbiAgcmVtb3ZlT3ZlcmZsb3dpbmc6IHRydWUsXHJcbiAgY29sb3JzOiB7IHI6IDM0LCBnOiA4NSwgYjogMTUzIH0sXHJcbiAgZm9udFNpemU6IHsgZnJvbTogMC4wMiwgdG86IDAuMDcgfSxcclxuICBmb250OiAnQXJpYWwnXHJcbn1cclxuXHJcbm1vZHVsZS5leHBvcnRzID0gZnVuY3Rpb24od29yZHMsIG9wdGlvbnMpIHtcclxuICBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7fSwgZGVmYXVsdE9wdGlvbnMsIG9wdGlvbnMpXHJcbiAgXHJcbiAgd29yZHMuZm9yRWFjaCh3b3JkID0+IHdvcmQud2VpZ2h0ID0gcGFyc2VGbG9hdCh3b3JkLndlaWdodCwgMTApKVxyXG4gIHdvcmRzLnNvcnQoKGEsIGIpID0+IGIud2VpZ2h0IC0gYS53ZWlnaHQpXHJcblxyXG4gIGNvbnN0IG91dHB1dFdvcmRzID0gW11cclxuICBjb25zdCBtYXhXZWlnaHQgPSB3b3Jkc1swXS53ZWlnaHRcclxuICBjb25zdCBtaW5XZWlnaHQgPSB3b3Jkc1t3b3Jkcy5sZW5ndGggLSAxXS53ZWlnaHRcclxuICBjb25zdCBzaXplcyA9IGZvbnRTaXplcy5nZW5lcmF0ZShvcHRpb25zLmZvbnRTaXplLCBvcHRpb25zLnN0ZXBzLCBvcHRpb25zLndpZHRoLCBvcHRpb25zLmhlaWdodClcclxuICBjb25zdCBjb2xvcnMgPSBjb2xvckdlbmVyYXRvci5nZW5lcmF0ZShvcHRpb25zLmNvbG9ycywgb3B0aW9ucy5zdGVwcylcclxuICBcclxuICBpZihvcHRpb25zLnByZXZpb3VzKVxyXG4gICAgbGF5b3V0RnJvbVByZXZpb3VzKClcclxuICBlbHNlXHJcbiAgICB3b3Jkcy5mb3JFYWNoKCh3b3JkLCBpbmRleCkgPT4gbGF5b3V0V29yZChpbmRleCwgd29yZCkpXHJcblxyXG4gIHJldHVybiBvdXRwdXRXb3Jkc1xyXG4gIFxyXG4gIGZ1bmN0aW9uIGxheW91dEZyb21QcmV2aW91cygpIHtcclxuICAgIGNvbnN0IHByZXZpb3VzV29yZHMgPSBvcHRpb25zLnByZXZpb3VzLnJlZHVjZSgod29yZHMsIHdvcmQpID0+ICh3b3Jkc1t3b3JkLnRleHRdID0gd29yZCwgd29yZHMpLCB7fSlcclxuICAgIGNvbnN0IHdvcmRzRm9yU2Vjb25kUGFzcyA9IFtdXHJcbiAgICBjb25zdCB3b3Jkc0ZvclRoaXJkUGFzcyA9IFtdXHJcbiAgICBcclxuICAgIC8vIGZpcnN0IHBhc3MgLSBsYXkgb3V0IGVhY2ggd29yZCB0aGF0IHdhcyBwcmV2aW91c2x5IHJlbmRlcmVkIGluIHRoZSBzYW1lIHBsYWNlLCBpZiBwb3NzaWJsZVxyXG4gICAgd29yZHMuZm9yRWFjaCh3b3JkID0+IHtcclxuICAgICAgY29uc3QgcHJldmlvdXNXb3JkID0gcHJldmlvdXNXb3Jkc1t3b3JkLnRleHRdXHJcbiAgICAgIGNvbnN0IHdlaWdodCA9IGZvbnRTaXplcy5tYXBXZWlnaHRUb1NjYWxlKHdvcmQud2VpZ2h0LCBtaW5XZWlnaHQsIG1heFdlaWdodCwgb3B0aW9ucy5zdGVwcylcclxuICAgICAgY29uc3QgZGltZW5zaW9ucyA9IG9wdGlvbnMubWVhc3VyZVRleHQod29yZC50ZXh0LCBvcHRpb25zLmZvbnQsIHNpemVzW3dlaWdodCAtIDFdKVxyXG4gIFxyXG4gICAgICBpZihwcmV2aW91c1dvcmQpIHtcclxuICAgICAgICBjb25zdCBvdXRwdXRXb3JkID0gY3JlYXRlT3V0cHV0V29yZCh3b3JkLCB3ZWlnaHQsIGRpbWVuc2lvbnMsIFxyXG4gICAgICAgICAgcHJldmlvdXNXb3JkLmxlZnQgLSAoZGltZW5zaW9ucy53aWR0aCAtIHByZXZpb3VzV29yZC53aWR0aCkgLyAyLjAsIFxyXG4gICAgICAgICAgcHJldmlvdXNXb3JkLnRvcCAtIChkaW1lbnNpb25zLmhlaWdodCAtIHByZXZpb3VzV29yZC5oZWlnaHQpIC8gMi4wKVxyXG5cclxuICAgICAgICBpZighYm91bmRzLmhpdFRlc3Qob3V0cHV0V29yZCwgb3V0cHV0V29yZHMpKSB7XHJcbiAgICAgICAgICBvdXRwdXRXb3Jkcy5wdXNoKG91dHB1dFdvcmQpXHJcbiAgICAgICAgfSBlbHNlIHtcclxuICAgICAgICAgIHdvcmRzRm9yU2Vjb25kUGFzcy5wdXNoKHdvcmQpXHJcbiAgICAgICAgfVxyXG4gICAgICB9IGVsc2Uge1xyXG4gICAgICAgIHdvcmRzRm9yVGhpcmRQYXNzLnB1c2god29yZClcclxuICAgICAgfVxyXG4gICAgfSlcclxuXHJcbiAgICAvLyBzZWNvbmQgcGFzcyAtIGxheSBvdXQgZWFjaCB3b3JkIHRoYXQgY291bGRuJ3QgYmUgcGxhY2VkIGluIGZpcnN0IHBhc3NcclxuICAgIHdvcmRzRm9yU2Vjb25kUGFzcy5mb3JFYWNoKCh3b3JkLCBpbmRleCkgPT4gbGF5b3V0V29yZChpbmRleCwgd29yZCkpXHJcblxyXG4gICAgLy8gdGhpcmQgcGFzcyAtIGxheSBvdXQgcmVtYWluaW5nIHdvcmRzIHdpdGggbm8gcHJldmlvdXMgd29yZFxyXG4gICAgd29yZHNGb3JUaGlyZFBhc3MuZm9yRWFjaCgod29yZCwgaW5kZXgpID0+IGxheW91dFdvcmQoaW5kZXgsIHdvcmQpKSAgICBcclxuICB9XHJcblxyXG4gIGZ1bmN0aW9uIGxheW91dFdvcmQoaW5kZXgsIHdvcmQpIHtcclxuICAgIGNvbnN0IHdlaWdodCA9IGZvbnRTaXplcy5tYXBXZWlnaHRUb1NjYWxlKHdvcmQud2VpZ2h0LCBtaW5XZWlnaHQsIG1heFdlaWdodCwgb3B0aW9ucy5zdGVwcylcclxuICAgIGNvbnN0IGRpbWVuc2lvbnMgPSBvcHRpb25zLm1lYXN1cmVUZXh0KHdvcmQudGV4dCwgb3B0aW9ucy5mb250LCBzaXplc1t3ZWlnaHQgLSAxXSlcclxuICAgIFxyXG4gICAgY29uc3Qgb3V0cHV0V29yZCA9IGxheW91dC5uZXh0KGluZGV4LCBvcHRpb25zLCBvdXRwdXRXb3JkcywgXHJcbiAgICAgIGNyZWF0ZU91dHB1dFdvcmQod29yZCwgd2VpZ2h0LCBkaW1lbnNpb25zLCAob3B0aW9ucy53aWR0aCAtIGRpbWVuc2lvbnMud2lkdGgpIC8gMi4wLCAob3B0aW9ucy5oZWlnaHQgLSBkaW1lbnNpb25zLmhlaWdodCkgLyAyLjApXHJcbiAgICApXHJcblxyXG4gICAgaWYgKCEob3B0aW9ucy5yZW1vdmVPdmVyZmxvd2luZyAmJiBib3VuZHMub3V0c2lkZUNvbnRhaW5lcihvdXRwdXRXb3JkLCBvcHRpb25zLndpZHRoLCBvcHRpb25zLmhlaWdodCkpKVxyXG4gICAgICBvdXRwdXRXb3Jkcy5wdXNoKG91dHB1dFdvcmQpXHJcbiAgfVxyXG5cclxuICBmdW5jdGlvbiBjcmVhdGVPdXRwdXRXb3JkKHdvcmQsIHdlaWdodCwgZGltZW5zaW9ucywgbGVmdCwgdG9wKSB7XHJcbiAgICByZXR1cm4ge1xyXG4gICAgICBjb2xvcjogY29sb3JzW3dlaWdodCAtIDFdLFxyXG4gICAgICBzaXplOiBzaXplc1t3ZWlnaHQgLSAxXSxcclxuICAgICAgd2VpZ2h0OiB3ZWlnaHQsXHJcbiAgICAgIHRleHQ6IHdvcmQudGV4dCxcclxuICAgICAgZm9udDogb3B0aW9ucy5mb250LFxyXG4gICAgICB3aWR0aDogZGltZW5zaW9ucy53aWR0aCxcclxuICAgICAgaGVpZ2h0OiBkaW1lbnNpb25zLmhlaWdodCxcclxuICAgICAgbGVmdDogbGVmdCxcclxuICAgICAgdG9wOiB0b3BcclxuICAgIH1cclxuICB9XHJcbn1cclxuXG5cblxuLy8vLy8vLy8vLy8vLy8vLy8vXG4vLyBXRUJQQUNLIEZPT1RFUlxuLy8gLi4veGNsb3VkL3NyYy9pbmRleC5qc1xuLy8gbW9kdWxlIGlkID0gNFxuLy8gbW9kdWxlIGNodW5rcyA9IDAiXSwibWFwcGluZ3MiOiJBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7Iiwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///4\n");
+"use strict";
+
+
+var fontSizes = __webpack_require__(5);
+var colorGenerator = __webpack_require__(6);
+var bounds = __webpack_require__(0);
+var layout = __webpack_require__(7);
+
+var defaultOptions = {
+  width: 640,
+  height: 480,
+  padding: 0,
+  steps: 10,
+  shape: 'elliptic',
+  removeOverflowing: true,
+  colors: { from: { r: 34, g: 85, b: 153 }, to: { r: 227, g: 236, b: 249 } },
+  fontSize: { from: 0.02, to: 0.07 },
+  font: 'Arial'
+};
+
+module.exports = function (words, options) {
+  options = Object.assign({}, defaultOptions, options);
+
+  words.forEach(function (word) {
+    return word.weight = parseFloat(word.weight, 10);
+  });
+  words.sort(function (a, b) {
+    return b.weight - a.weight;
+  });
+
+  var outputWords = [];
+  var maxWeight = words[0].weight;
+  var minWeight = words[words.length - 1].weight;
+  var sizes = fontSizes.generate(options.fontSize, options.steps, options.width, options.height);
+  var colors = colorGenerator.generate(options.colors, options.steps);
+
+  if (options.previous) layoutFromPrevious();else words.forEach(function (word, index) {
+    return layoutWord(index, word);
+  });
+
+  return outputWords;
+
+  function layoutFromPrevious() {
+    var previousWords = options.previous.reduce(function (words, word) {
+      return words[word.text] = word, words;
+    }, {});
+    var wordsForSecondPass = [];
+    var wordsForThirdPass = [];
+
+    // first pass - lay out each word that was previously rendered in the same place, if possible
+    words.forEach(function (word) {
+      var previousWord = previousWords[word.text];
+      var weight = fontSizes.mapWeightToScale(word.weight, minWeight, maxWeight, options.steps);
+      var dimensions = options.measureText(word.text, options.font, sizes[weight - 1]);
+
+      if (previousWord) {
+        var outputWord = createOutputWord(word, weight, dimensions, previousWord.left - (dimensions.width - previousWord.width) / 2.0, previousWord.top - (dimensions.height - previousWord.height) / 2.0);
+
+        if (!bounds.hitTest(outputWord, outputWords)) {
+          outputWords.push(outputWord);
+        } else {
+          wordsForSecondPass.push(word);
+        }
+      } else {
+        wordsForThirdPass.push(word);
+      }
+    });
+
+    // second pass - lay out each word that couldn't be placed in first pass
+    wordsForSecondPass.forEach(function (word, index) {
+      return layoutWord(index, word);
+    });
+
+    // third pass - lay out remaining words with no previous word
+    wordsForThirdPass.forEach(function (word, index) {
+      return layoutWord(index, word);
+    });
+  }
+
+  function layoutWord(index, word) {
+    var weight = fontSizes.mapWeightToScale(word.weight, minWeight, maxWeight, options.steps);
+    var dimensions = options.measureText(word.text, options.font, sizes[weight - 1]);
+
+    var outputWord = layout.next(index, options, outputWords, createOutputWord(word, weight, dimensions, (options.width - dimensions.width) / 2.0, (options.height - dimensions.height) / 2.0));
+
+    if (!(options.removeOverflowing && bounds.outsideContainer(outputWord, options.width, options.height))) outputWords.push(outputWord);
+  }
+
+  function createOutputWord(word, weight, dimensions, left, top) {
+    return {
+      color: colors[weight - 1],
+      size: sizes[weight - 1],
+      weight: weight,
+      text: word.text,
+      font: options.font,
+      width: dimensions.width,
+      height: dimensions.height,
+      left: left,
+      top: top
+    };
+  }
+};
+
+module.exports.defaultOptions = defaultOptions;
 
 /***/ }),
 /* 5 */
-/*!**********************************!*\
-  !*** ../xcloud/src/fontSizes.js ***!
-  \**********************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = {\r\n  generate: function (option, steps, width, height) {\r\n    const generator = module.exports.createGenerator(option, steps)\r\n    let result = []\r\n\r\n    for (var i = 1; i <= steps; i++) {\r\n      result.push(generator(width, height, i))\r\n    }\r\n\r\n    return result\r\n  },\r\n  createGenerator: function (option, steps) {\r\n    if (typeof option == 'function') {\r\n      return option;\r\n\r\n    } else if (typeof option === 'object') {\r\n      return function(width, height, weight) {\r\n        var max = width * option.to\r\n        var min = width * option.from\r\n        return Math.round(min + (max - min) * 1.0 / (steps - 1) * (weight - 1))\r\n      }\r\n    }\r\n  },\r\n\r\n  mapWeightToScale: function (weight, minWeight, maxWeight, steps) {\r\n    if(minWeight !== maxWeight)\r\n      return Math.round((weight - minWeight) * 1.0 * (steps - 1) / (maxWeight - minWeight)) + 1\r\n    else\r\n      return Math.round(steps / 2)\r\n  }\r\n}//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiNS5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy8uLi94Y2xvdWQvc3JjL2ZvbnRTaXplcy5qcz9hNjhlIl0sInNvdXJjZXNDb250ZW50IjpbIm1vZHVsZS5leHBvcnRzID0ge1xyXG4gIGdlbmVyYXRlOiBmdW5jdGlvbiAob3B0aW9uLCBzdGVwcywgd2lkdGgsIGhlaWdodCkge1xyXG4gICAgY29uc3QgZ2VuZXJhdG9yID0gbW9kdWxlLmV4cG9ydHMuY3JlYXRlR2VuZXJhdG9yKG9wdGlvbiwgc3RlcHMpXHJcbiAgICBsZXQgcmVzdWx0ID0gW11cclxuXHJcbiAgICBmb3IgKHZhciBpID0gMTsgaSA8PSBzdGVwczsgaSsrKSB7XHJcbiAgICAgIHJlc3VsdC5wdXNoKGdlbmVyYXRvcih3aWR0aCwgaGVpZ2h0LCBpKSlcclxuICAgIH1cclxuXHJcbiAgICByZXR1cm4gcmVzdWx0XHJcbiAgfSxcclxuICBjcmVhdGVHZW5lcmF0b3I6IGZ1bmN0aW9uIChvcHRpb24sIHN0ZXBzKSB7XHJcbiAgICBpZiAodHlwZW9mIG9wdGlvbiA9PSAnZnVuY3Rpb24nKSB7XHJcbiAgICAgIHJldHVybiBvcHRpb247XHJcblxyXG4gICAgfSBlbHNlIGlmICh0eXBlb2Ygb3B0aW9uID09PSAnb2JqZWN0Jykge1xyXG4gICAgICByZXR1cm4gZnVuY3Rpb24od2lkdGgsIGhlaWdodCwgd2VpZ2h0KSB7XHJcbiAgICAgICAgdmFyIG1heCA9IHdpZHRoICogb3B0aW9uLnRvXHJcbiAgICAgICAgdmFyIG1pbiA9IHdpZHRoICogb3B0aW9uLmZyb21cclxuICAgICAgICByZXR1cm4gTWF0aC5yb3VuZChtaW4gKyAobWF4IC0gbWluKSAqIDEuMCAvIChzdGVwcyAtIDEpICogKHdlaWdodCAtIDEpKVxyXG4gICAgICB9XHJcbiAgICB9XHJcbiAgfSxcclxuXHJcbiAgbWFwV2VpZ2h0VG9TY2FsZTogZnVuY3Rpb24gKHdlaWdodCwgbWluV2VpZ2h0LCBtYXhXZWlnaHQsIHN0ZXBzKSB7XHJcbiAgICBpZihtaW5XZWlnaHQgIT09IG1heFdlaWdodClcclxuICAgICAgcmV0dXJuIE1hdGgucm91bmQoKHdlaWdodCAtIG1pbldlaWdodCkgKiAxLjAgKiAoc3RlcHMgLSAxKSAvIChtYXhXZWlnaHQgLSBtaW5XZWlnaHQpKSArIDFcclxuICAgIGVsc2VcclxuICAgICAgcmV0dXJuIE1hdGgucm91bmQoc3RlcHMgLyAyKVxyXG4gIH1cclxufVxuXG5cbi8vLy8vLy8vLy8vLy8vLy8vL1xuLy8gV0VCUEFDSyBGT09URVJcbi8vIC4uL3hjbG91ZC9zcmMvZm9udFNpemVzLmpzXG4vLyBtb2R1bGUgaWQgPSA1XG4vLyBtb2R1bGUgY2h1bmtzID0gMCJdLCJtYXBwaW5ncyI6IkFBQUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EiLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///5\n");
+"use strict";
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+module.exports = {
+  generate: function generate(option, steps, width, height) {
+    var generator = module.exports.createGenerator(option, steps);
+    var result = [];
+
+    for (var i = 1; i <= steps; i++) {
+      result.push(generator(width, height, i));
+    }
+
+    return result;
+  },
+  createGenerator: function createGenerator(option, steps) {
+    if (typeof option == 'function') {
+      return option;
+    } else if ((typeof option === 'undefined' ? 'undefined' : _typeof(option)) === 'object') {
+      return function (width, height, weight) {
+        var max = width * option.to;
+        var min = width * option.from;
+        return Math.round(min + (max - min) * 1.0 / (steps - 1) * (weight - 1));
+      };
+    }
+  },
+
+  mapWeightToScale: function mapWeightToScale(weight, minWeight, maxWeight, steps) {
+    if (minWeight !== maxWeight) return Math.round((weight - minWeight) * 1.0 * (steps - 1) / (maxWeight - minWeight)) + 1;else return Math.round(steps / 2);
+  }
+};
 
 /***/ }),
 /* 6 */
-/*!***************************************!*\
-  !*** ../xcloud/src/colorGenerator.js ***!
-  \***************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = {\r\n  generate: function (option, steps) {\r\n    const generator = module.exports.createGenerator(option, steps)\r\n    let result = []\r\n\r\n    for (var i = 1; i <= steps; i++) {\r\n      result.push(generator(i))\r\n    }\r\n\r\n    return result\r\n  },\r\n  createGenerator: function(option, steps) {\r\n    if (typeof option == 'function') {\r\n      return option\r\n\r\n    } else if (typeof option === 'object') {\r\n      return function (weight) {\r\n        return {\r\n          r: Math.round(option.r + ((256 - option.r) * (1 / steps) * (steps - weight))),\r\n          g: Math.round(option.g + ((256 - option.g) * (1 / steps) * (steps - weight))),\r\n          b: Math.round(option.b + ((256 - option.b) * (1 / steps) * (steps - weight)))\r\n        }\r\n      }\r\n    }\r\n  }\r\n}//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiNi5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy8uLi94Y2xvdWQvc3JjL2NvbG9yR2VuZXJhdG9yLmpzPzAzZGEiXSwic291cmNlc0NvbnRlbnQiOlsibW9kdWxlLmV4cG9ydHMgPSB7XHJcbiAgZ2VuZXJhdGU6IGZ1bmN0aW9uIChvcHRpb24sIHN0ZXBzKSB7XHJcbiAgICBjb25zdCBnZW5lcmF0b3IgPSBtb2R1bGUuZXhwb3J0cy5jcmVhdGVHZW5lcmF0b3Iob3B0aW9uLCBzdGVwcylcclxuICAgIGxldCByZXN1bHQgPSBbXVxyXG5cclxuICAgIGZvciAodmFyIGkgPSAxOyBpIDw9IHN0ZXBzOyBpKyspIHtcclxuICAgICAgcmVzdWx0LnB1c2goZ2VuZXJhdG9yKGkpKVxyXG4gICAgfVxyXG5cclxuICAgIHJldHVybiByZXN1bHRcclxuICB9LFxyXG4gIGNyZWF0ZUdlbmVyYXRvcjogZnVuY3Rpb24ob3B0aW9uLCBzdGVwcykge1xyXG4gICAgaWYgKHR5cGVvZiBvcHRpb24gPT0gJ2Z1bmN0aW9uJykge1xyXG4gICAgICByZXR1cm4gb3B0aW9uXHJcblxyXG4gICAgfSBlbHNlIGlmICh0eXBlb2Ygb3B0aW9uID09PSAnb2JqZWN0Jykge1xyXG4gICAgICByZXR1cm4gZnVuY3Rpb24gKHdlaWdodCkge1xyXG4gICAgICAgIHJldHVybiB7XHJcbiAgICAgICAgICByOiBNYXRoLnJvdW5kKG9wdGlvbi5yICsgKCgyNTYgLSBvcHRpb24ucikgKiAoMSAvIHN0ZXBzKSAqIChzdGVwcyAtIHdlaWdodCkpKSxcclxuICAgICAgICAgIGc6IE1hdGgucm91bmQob3B0aW9uLmcgKyAoKDI1NiAtIG9wdGlvbi5nKSAqICgxIC8gc3RlcHMpICogKHN0ZXBzIC0gd2VpZ2h0KSkpLFxyXG4gICAgICAgICAgYjogTWF0aC5yb3VuZChvcHRpb24uYiArICgoMjU2IC0gb3B0aW9uLmIpICogKDEgLyBzdGVwcykgKiAoc3RlcHMgLSB3ZWlnaHQpKSlcclxuICAgICAgICB9XHJcbiAgICAgIH1cclxuICAgIH1cclxuICB9XHJcbn1cblxuXG4vLy8vLy8vLy8vLy8vLy8vLy9cbi8vIFdFQlBBQ0sgRk9PVEVSXG4vLyAuLi94Y2xvdWQvc3JjL2NvbG9yR2VuZXJhdG9yLmpzXG4vLyBtb2R1bGUgaWQgPSA2XG4vLyBtb2R1bGUgY2h1bmtzID0gMCJdLCJtYXBwaW5ncyI6IkFBQUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQSIsInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///6\n");
+"use strict";
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+module.exports = {
+  generate: function generate(option, steps) {
+    var generator = module.exports.createGenerator(option, steps);
+    var result = [];
+
+    for (var i = 1; i <= steps; i++) {
+      result.push(generator(i));
+    }
+
+    return result.reverse();
+  },
+  createGenerator: function createGenerator(option, steps) {
+    if (typeof option == 'function') {
+      return option;
+    } else if ((typeof option === 'undefined' ? 'undefined' : _typeof(option)) === 'object') {
+      return function (weight) {
+        return {
+          r: Math.round(option.from.r + (option.to.r - option.from.r) * (1 / steps) * (steps - weight)),
+          g: Math.round(option.from.g + (option.to.g - option.from.g) * (1 / steps) * (steps - weight)),
+          b: Math.round(option.from.b + (option.to.b - option.from.b) * (1 / steps) * (steps - weight))
+        };
+      };
+    }
+  }
+};
 
 /***/ }),
 /* 7 */
-/*!*******************************!*\
-  !*** ../xcloud/src/layout.js ***!
-  \*******************************/
-/*! no static exports found */
-/*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const bounds = __webpack_require__(/*! ./bounds */ 0)\r\n\r\nconst layout = module.exports = {\r\n  next: function (index, options, outputWords, outputWord) {\r\n    return layout[options.shape](index, outputWord, outputWords, options.width, options.height, options.padding)\r\n  },\r\n\r\n  elliptic: function (index, outputWord, outputWords, width, height, padding) {\r\n    let currentAngle = Math.random() * 6.28\r\n    let radius = 0.0\r\n    let step = 2.0\r\n    let aspectRatio = width / height\r\n    \r\n    while (bounds.hitTest(outputWord, outputWords, padding)) {\r\n      radius += step\r\n      currentAngle += (index % 2 === 0 ? 1 : -1) * step\r\n\r\n      outputWord.left = ((width - outputWord.width) / 2.0) + (radius * Math.cos(currentAngle)) * aspectRatio\r\n      outputWord.top = ((height - outputWord.height) / 2.0) + radius * Math.sin(currentAngle)\r\n    }\r\n    \r\n    return outputWord\r\n  },\r\n\r\n  rectangular: function (index, outputWord, outputWords, width, height, padding) {\r\n    let stepsInDirection = 0.0\r\n    let quarterTurns = 0.0\r\n    let step = 18.0\r\n    let aspectRatio = width / height\r\n    \r\n    while (bounds.hitTest(outputWord, outputWords, padding)) {\r\n      stepsInDirection++\r\n      \r\n      if (stepsInDirection * step > (1 + Math.floor(quarterTurns / 2.0)) * step * ((quarterTurns % 4 % 2) === 0 ? 1 : aspectRatio)) {\r\n        stepsInDirection = 0.0\r\n        quarterTurns++\r\n      }\r\n\r\n      switch (quarterTurns % 4) {\r\n        case 1:\r\n          outputWord.left += step * aspectRatio + Math.random() * 2.0\r\n          break\r\n        case 2:\r\n          outputWord.top -= step + Math.random() * 2.0\r\n          break\r\n        case 3:\r\n          outputWord.left -= step * aspectRatio + Math.random() * 2.0\r\n          break\r\n        case 0:\r\n          outputWord.top += step + Math.random() * 2.0\r\n          break\r\n      }\r\n    }\r\n\r\n    return outputWord     \r\n  }\r\n}//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiNy5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy8uLi94Y2xvdWQvc3JjL2xheW91dC5qcz9kOTU2Il0sInNvdXJjZXNDb250ZW50IjpbImNvbnN0IGJvdW5kcyA9IHJlcXVpcmUoJy4vYm91bmRzJylcclxuXHJcbmNvbnN0IGxheW91dCA9IG1vZHVsZS5leHBvcnRzID0ge1xyXG4gIG5leHQ6IGZ1bmN0aW9uIChpbmRleCwgb3B0aW9ucywgb3V0cHV0V29yZHMsIG91dHB1dFdvcmQpIHtcclxuICAgIHJldHVybiBsYXlvdXRbb3B0aW9ucy5zaGFwZV0oaW5kZXgsIG91dHB1dFdvcmQsIG91dHB1dFdvcmRzLCBvcHRpb25zLndpZHRoLCBvcHRpb25zLmhlaWdodCwgb3B0aW9ucy5wYWRkaW5nKVxyXG4gIH0sXHJcblxyXG4gIGVsbGlwdGljOiBmdW5jdGlvbiAoaW5kZXgsIG91dHB1dFdvcmQsIG91dHB1dFdvcmRzLCB3aWR0aCwgaGVpZ2h0LCBwYWRkaW5nKSB7XHJcbiAgICBsZXQgY3VycmVudEFuZ2xlID0gTWF0aC5yYW5kb20oKSAqIDYuMjhcclxuICAgIGxldCByYWRpdXMgPSAwLjBcclxuICAgIGxldCBzdGVwID0gMi4wXHJcbiAgICBsZXQgYXNwZWN0UmF0aW8gPSB3aWR0aCAvIGhlaWdodFxyXG4gICAgXHJcbiAgICB3aGlsZSAoYm91bmRzLmhpdFRlc3Qob3V0cHV0V29yZCwgb3V0cHV0V29yZHMsIHBhZGRpbmcpKSB7XHJcbiAgICAgIHJhZGl1cyArPSBzdGVwXHJcbiAgICAgIGN1cnJlbnRBbmdsZSArPSAoaW5kZXggJSAyID09PSAwID8gMSA6IC0xKSAqIHN0ZXBcclxuXHJcbiAgICAgIG91dHB1dFdvcmQubGVmdCA9ICgod2lkdGggLSBvdXRwdXRXb3JkLndpZHRoKSAvIDIuMCkgKyAocmFkaXVzICogTWF0aC5jb3MoY3VycmVudEFuZ2xlKSkgKiBhc3BlY3RSYXRpb1xyXG4gICAgICBvdXRwdXRXb3JkLnRvcCA9ICgoaGVpZ2h0IC0gb3V0cHV0V29yZC5oZWlnaHQpIC8gMi4wKSArIHJhZGl1cyAqIE1hdGguc2luKGN1cnJlbnRBbmdsZSlcclxuICAgIH1cclxuICAgIFxyXG4gICAgcmV0dXJuIG91dHB1dFdvcmRcclxuICB9LFxyXG5cclxuICByZWN0YW5ndWxhcjogZnVuY3Rpb24gKGluZGV4LCBvdXRwdXRXb3JkLCBvdXRwdXRXb3Jkcywgd2lkdGgsIGhlaWdodCwgcGFkZGluZykge1xyXG4gICAgbGV0IHN0ZXBzSW5EaXJlY3Rpb24gPSAwLjBcclxuICAgIGxldCBxdWFydGVyVHVybnMgPSAwLjBcclxuICAgIGxldCBzdGVwID0gMTguMFxyXG4gICAgbGV0IGFzcGVjdFJhdGlvID0gd2lkdGggLyBoZWlnaHRcclxuICAgIFxyXG4gICAgd2hpbGUgKGJvdW5kcy5oaXRUZXN0KG91dHB1dFdvcmQsIG91dHB1dFdvcmRzLCBwYWRkaW5nKSkge1xyXG4gICAgICBzdGVwc0luRGlyZWN0aW9uKytcclxuICAgICAgXHJcbiAgICAgIGlmIChzdGVwc0luRGlyZWN0aW9uICogc3RlcCA+ICgxICsgTWF0aC5mbG9vcihxdWFydGVyVHVybnMgLyAyLjApKSAqIHN0ZXAgKiAoKHF1YXJ0ZXJUdXJucyAlIDQgJSAyKSA9PT0gMCA/IDEgOiBhc3BlY3RSYXRpbykpIHtcclxuICAgICAgICBzdGVwc0luRGlyZWN0aW9uID0gMC4wXHJcbiAgICAgICAgcXVhcnRlclR1cm5zKytcclxuICAgICAgfVxyXG5cclxuICAgICAgc3dpdGNoIChxdWFydGVyVHVybnMgJSA0KSB7XHJcbiAgICAgICAgY2FzZSAxOlxyXG4gICAgICAgICAgb3V0cHV0V29yZC5sZWZ0ICs9IHN0ZXAgKiBhc3BlY3RSYXRpbyArIE1hdGgucmFuZG9tKCkgKiAyLjBcclxuICAgICAgICAgIGJyZWFrXHJcbiAgICAgICAgY2FzZSAyOlxyXG4gICAgICAgICAgb3V0cHV0V29yZC50b3AgLT0gc3RlcCArIE1hdGgucmFuZG9tKCkgKiAyLjBcclxuICAgICAgICAgIGJyZWFrXHJcbiAgICAgICAgY2FzZSAzOlxyXG4gICAgICAgICAgb3V0cHV0V29yZC5sZWZ0IC09IHN0ZXAgKiBhc3BlY3RSYXRpbyArIE1hdGgucmFuZG9tKCkgKiAyLjBcclxuICAgICAgICAgIGJyZWFrXHJcbiAgICAgICAgY2FzZSAwOlxyXG4gICAgICAgICAgb3V0cHV0V29yZC50b3AgKz0gc3RlcCArIE1hdGgucmFuZG9tKCkgKiAyLjBcclxuICAgICAgICAgIGJyZWFrXHJcbiAgICAgIH1cclxuICAgIH1cclxuXHJcbiAgICByZXR1cm4gb3V0cHV0V29yZCAgICAgXHJcbiAgfVxyXG59XG5cblxuLy8vLy8vLy8vLy8vLy8vLy8vXG4vLyBXRUJQQUNLIEZPT1RFUlxuLy8gLi4veGNsb3VkL3NyYy9sYXlvdXQuanNcbi8vIG1vZHVsZSBpZCA9IDdcbi8vIG1vZHVsZSBjaHVua3MgPSAwIl0sIm1hcHBpbmdzIjoiQUFBQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EiLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///7\n");
+"use strict";
+
+
+var bounds = __webpack_require__(0);
+
+var layout = module.exports = {
+  next: function next(index, options, outputWords, outputWord) {
+    return layout[options.shape](index, outputWord, outputWords, options.width, options.height, options.padding);
+  },
+
+  elliptic: function elliptic(index, outputWord, outputWords, width, height, padding) {
+    var currentAngle = Math.random() * 6.28;
+    var radius = 0.0;
+    var step = 2.0;
+    var aspectRatio = width / height;
+
+    while (bounds.hitTest(outputWord, outputWords, padding)) {
+      radius += step;
+      currentAngle += (index % 2 === 0 ? 1 : -1) * step;
+
+      outputWord.left = (width - outputWord.width) / 2.0 + radius * Math.cos(currentAngle) * aspectRatio;
+      outputWord.top = (height - outputWord.height) / 2.0 + radius * Math.sin(currentAngle);
+    }
+
+    return outputWord;
+  },
+
+  rectangular: function rectangular(index, outputWord, outputWords, width, height, padding) {
+    var stepsInDirection = 0.0;
+    var quarterTurns = 0.0;
+    var step = 18.0;
+    var aspectRatio = width / height;
+
+    while (bounds.hitTest(outputWord, outputWords, padding)) {
+      stepsInDirection++;
+
+      if (stepsInDirection * step > (1 + Math.floor(quarterTurns / 2.0)) * step * (quarterTurns % 4 % 2 === 0 ? 1 : aspectRatio)) {
+        stepsInDirection = 0.0;
+        quarterTurns++;
+      }
+
+      switch (quarterTurns % 4) {
+        case 1:
+          outputWord.left += step * aspectRatio + Math.random() * 2.0;
+          break;
+        case 2:
+          outputWord.top -= step + Math.random() * 2.0;
+          break;
+        case 3:
+          outputWord.left -= step * aspectRatio + Math.random() * 2.0;
+          break;
+        case 0:
+          outputWord.top += step + Math.random() * 2.0;
+          break;
+      }
+    }
+
+    return outputWord;
+  }
+};
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports) {
+
+module.exports = [{"text":"awesome","weight":39},{"text":"day","weight":36},{"text":"good","weight":34},{"text":"time","weight":31},{"text":"work","weight":28},{"text":"pretty","weight":25},{"text":"bit","weight":22},{"text":"people","weight":22},{"text":"today","weight":20},{"text":"things","weight":20},{"text":"cool","weight":19},{"text":"days","weight":19},{"text":"great","weight":19},{"text":"love","weight":19},{"text":"lol","weight":18},{"text":"fuck","weight":18},{"text":"life","weight":18},{"text":"night","weight":17},{"text":"shit","weight":17},{"text":"facebook","weight":17},{"text":"amazing","weight":16},{"text":"fucking","weight":14},{"text":"week","weight":14},{"text":"fun","weight":13},{"text":"interesting","weight":13},{"text":"hard","weight":12},{"text":"canberra","weight":12},{"text":"happy","weight":12},{"text":"weekend","weight":11},{"text":"stuff","weight":11},{"text":"long","weight":11},{"text":"worth","weight":11},{"text":"web","weight":11},{"text":"aussie","weight":10},{"text":"wow","weight":10},{"text":"thing","weight":10},{"text":"years","weight":10},{"text":"yeh","weight":10},{"text":"phone","weight":9},{"text":"watch","weight":9},{"text":"code","weight":9},{"text":"thoughts","weight":9},{"text":"feel","weight":9},{"text":"crazy","weight":9},{"text":"half","weight":9},{"text":"metal","weight":9},{"text":"snow","weight":9},{"text":"live","weight":9},{"text":"sweet","weight":8},{"text":"finally","weight":8}]
 
 /***/ })
 /******/ ]);

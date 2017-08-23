@@ -13,7 +13,7 @@ module.exports = function (words, options) {
 function renderCloud(words) {
   return words.reduce((target, word) => {
     var span = document.createElement('span')
-    span.style = `display: block; position: absolute; top: ${word.top}px; left: ${word.left}px; font-family: ${word.font}; font-size: ${word.size}px; color: ${colorToCSS(word.color)}`
+    span.style.cssText = `display: block; position: absolute; top: ${word.top}px; left: ${word.left}px; font-family: ${word.font}; font-size: ${word.size}px; color: ${colorToCSS(word.color)}`
     span.innerHTML = word.text
     target.appendChild(span)
     return target

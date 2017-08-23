@@ -1,3 +1,4 @@
+require('babel-polyfill')
 const xcloud = require('../../src')
 
 const words = [

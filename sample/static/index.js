@@ -1,4 +1,5 @@
 const xcloud = require('../../src')
+require('babel-polyfill')
 
 window.onload = function () {
   const words = [
